@@ -1,0 +1,184 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background: #f2efe9;
+  color: #2b2b2b;
+  padding: 30px 20px 60px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 6px;
+}
+
+header p {
+  color: #666;
+}
+
+/* filter buttons */
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.filter-btn {
+  padding: 8px 20px;
+  border: 2px solid #2b5d57;
+  background: transparent;
+  color: #2b5d57;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: #2b5d57;
+  color: #fff;
+}
+
+/* grid */
+.gallery {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  aspect-ratio: 4 / 3;
+  background: #ddd;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.item.hide {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.item:hover img {
+  transform: scale(1.1);
+}
+
+.item .title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 25px 12px 10px;
+  color: #fff;
+  font-size: 0.95rem;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.item:hover .title {
+  transform: translateY(0);
+}
+
+/* lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 100;
+}
+
+.lightbox.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox figure {
+  max-width: 85vw;
+  text-align: center;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 78vh;
+  border-radius: 6px;
+  transition: opacity 0.25s ease;
+}
+
+.lightbox img.fade {
+  opacity: 0;
+}
+
+.lightbox figcaption {
+  color: #ddd;
+  margin-top: 12px;
+}
+
+.close,
+.nav {
+  position: absolute;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+}
+
+.close {
+  top: 15px;
+  right: 25px;
+  font-size: 2.8rem;
+}
+
+.nav {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  padding: 14px 16px;
+  border-radius: 50%;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+.close:hover { color: #e8b04a; }
+.nav:hover { background: rgba(255, 255, 255, 0.15); }
+
+/* small screens */
+@media (max-width: 600px) {
+  header h1 { font-size: 1.7rem; }
+  .gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .nav { font-size: 1.4rem; padding: 10px 12px; }
+  .prev { left: 5px; }
+  .next { right: 5px; }
+}

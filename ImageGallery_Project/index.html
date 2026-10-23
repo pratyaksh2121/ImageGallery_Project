@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>My Image Gallery</h1>
+    <p>Click any photo to open it. Use the arrow keys to move around.</p>
+  </header>
+
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="nature">Nature</button>
+    <button class="filter-btn" data-filter="animals">Animals</button>
+    <button class="filter-btn" data-filter="places">Places</button>
+  </div>
+
+  <main class="gallery" id="gallery"></main>
+
+  <!-- lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="close" id="closeBtn" aria-label="Close">&times;</button>
+    <button class="nav prev" id="prevBtn" aria-label="Previous">&#10094;</button>
+    <figure>
+      <img id="lightboxImg" src="" alt="">
+      <figcaption id="caption"></figcaption>
+    </figure>
+    <button class="nav next" id="nextBtn" aria-label="Next">&#10095;</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
